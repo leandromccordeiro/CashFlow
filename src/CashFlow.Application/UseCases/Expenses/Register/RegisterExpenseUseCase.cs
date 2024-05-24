@@ -1,5 +1,4 @@
-﻿using CashFlow.Comunication.Enums;
-using CashFlow.Comunication.Requests;
+﻿using CashFlow.Comunication.Requests;
 using CashFlow.Comunication.Responses;
 
 namespace CashFlow.Application.UseCases.Expenses.Register;
@@ -13,6 +12,7 @@ public class RegisterExpenseUseCase
     }
     private void Validate(RequestRegisterExpenseJson request)
     {
+        #region Validação antiga
         //var titleIsEmpty = string.IsNullOrWhiteSpace(request.Title);
         //if(titleIsEmpty)
         //{
@@ -34,11 +34,13 @@ public class RegisterExpenseUseCase
         //if(paymentTypeIsValid == false)
         //{
         //    throw new ArgumentException("Payment Type is not valid");
-        //}
+        //} 
+        #endregion
+
         var validator = new RegisterExpenseValidator();
         var result = validator.Validate(request);
 
-        result.Errors.Select(f => f.);
+        result.Errors.Select(f => f.ToString());
     }
 
 }
